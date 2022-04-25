@@ -1,3 +1,7 @@
+import 'dart:collection';
+
+import 'package:coffee_machine_flutter/style/app_style.dart';
+import 'package:coffee_machine_flutter/widget/input_email.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -16,47 +20,13 @@ class _MainScreenState extends State<MainScreen> {
   int quantity = 0;
   int price = 20;
   TextEditingController controller = TextEditingController();
-
-  quantityNotToZero() {
-    if (quantity == 0) {
-      quantity = quantity + 1;
-      return;
-    }
-  }
-
-  /// showToast it function for send for user message
-  showToast() {
-    /// remove error if quantity = 0
-    if (quantity == 0) {
-      setState(() {
-        chocolateCheckedPrice = 0;
-        withCreamCheckedPrice = 0;
-        print('It Run 1');
-      });
-    }
-
-    /// toast message
-    Fluttertoast.showToast(
-      msg: "Thank You We Will Send Message To Your Email"
-          "\n Quantity: $quantity "
-          "\n Price: ${quantity >= 1 && isWithCreamChecked == true && isChocolateChecked == true ? withCreamCheckedPrice + quantity * price : quantity * price} "
-          "\n Adds: ${isChocolateChecked == true ? 'Chocolate' : 'Without Chocolate'} "
-          "\n ${isWithCreamChecked == true ? 'and Cream' : 'Without Cream'} ",
-      toastLength: Toast.LENGTH_LONG,
-      gravity: ToastGravity.BOTTOM,
-      timeInSecForIosWeb: 5,
-      backgroundColor: Colors.brown[800],
-      textColor: Colors.white,
-      fontSize: 18.0,
-    );
-  }
-
+  var str = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Colors.brown[800],
+        backgroundColor: kMainColor,
         title: const Text('CoffeeMachine'),
         actions: const [
           Padding(
@@ -76,22 +46,20 @@ class _MainScreenState extends State<MainScreen> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    TextField(
-                      decoration: InputDecoration(
-                        fillColor: Colors.brown[900],
-                        helperText: 'We Send Message To You By this Email',
-                        hintText: 'yourEmail@gmail.com',
-                        label: const Text('Email'),
-                      ),
-                      onChanged: (value) {
-                        print("The value entered is : $value");
-                      },
-                      keyboardType: TextInputType.emailAddress,
+                    /// Email
+                    InputEmail(
+                      color: kMainColor,
+                      helpText: 'We Send Message To You By this Email',
+                      hintText: 'yourEmail@gmail.com',
+                      labelText: Text('$str'),
+                      inputType: TextInputType.emailAddress,
+                      controller: controller,
                     ),
                     const SizedBox(
                       height: 10,
                     ),
                     const Text('Enter Your Type Of Coffee'),
+                    /// type of coffee
                     Row(
                       children: [
                         Checkbox(
@@ -154,11 +122,9 @@ class _MainScreenState extends State<MainScreen> {
               ),
               OutlinedButton.icon(
                 style: ButtonStyle(
-                  foregroundColor: MaterialStateProperty.all(Colors.brown[800]),
+                  foregroundColor: MaterialStateProperty.all(kMainColor),
                 ),
-                onPressed: () {
-                  showToast();
-                },
+                onPressed: () => showToast(),
                 icon: const Icon(
                   Icons.coffee,
                 ),
@@ -168,6 +134,45 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  quantityNotToZero() {
+    if (quantity == 0) {
+      quantity = quantity + 1;
+      return;
+    }
+  }
+
+  /// showToast it function for send for user message
+  showToast() {
+    /// remove error if quantity = 0
+    if (quantity == 0) {
+      setState(() {
+        chocolateCheckedPrice = 0;
+        withCreamCheckedPrice = 0;
+        print('It Run 1');
+      });
+    }
+
+    setState(() {
+      str = controller.text;
+    });
+
+    /// toast message
+    Fluttertoast.showToast(
+      msg: "Thank You We Will Send Message To Your Email"
+          "\n $str"
+          "\n Quantity: $quantity "
+          "\n Price: ${quantity >= 1 && isWithCreamChecked == true && isChocolateChecked == true ? withCreamCheckedPrice + quantity * price : quantity * price} "
+          "\n Adds: ${isChocolateChecked == true ? 'Chocolate' : 'Without Chocolate'} "
+          "\n ${isWithCreamChecked == true ? 'and Cream' : 'Without Cream'} ",
+      toastLength: Toast.LENGTH_LONG,
+      gravity: ToastGravity.BOTTOM,
+      timeInSecForIosWeb: 5,
+      backgroundColor: kMainColor,
+      textColor: kTextToastColor,
+      fontSize: 18.0,
     );
   }
 }
