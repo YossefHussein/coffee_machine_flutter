@@ -73,12 +73,14 @@ class AppCubit extends Cubit<AppState> {
     if (quantity == 0 || emailController.text.isEmpty) {
       isWithChocolateChecked = false;
       isWithChocolateChecked = false;
+      price = 0;
+      quantity = 0;
     }
     Fluttertoast.showToast(
       msg: 'We will send message to your email'
           '\n ${emailController.text.isEmpty ? 'email must be empty' : emailController.text}'
           '\n quantity: $quantity'
-          '\n price: $price'
+          '\n price: ${price * quantity}'
           '\n addition: \n'
           ' ${isWithChocolateChecked == true && quantity >= 1 ? 'you order  with chocolate' : 'you order  without chocolate'} '
           '\n ${isWithCreamChecked == true && quantity >= 1 ? 'you order with  cream' : 'you order  without cream'} '
