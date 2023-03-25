@@ -28,7 +28,7 @@ class _MainModuleState extends State<MainModule> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Image.asset('assets/images/show_coffee.png'),
-                    // Email
+                    // email
                     defaultFormField(
                       helperText: 'please write your email here',
                       hintText: 'example@gmail.com',
@@ -62,7 +62,6 @@ class _MainModuleState extends State<MainModule> {
                         const Text('adding Cream to coffee')
                       ],
                     ),
-
                     /// adding or less the coffee quantity
                     Row(
                       children: [
@@ -73,7 +72,6 @@ class _MainModuleState extends State<MainModule> {
                               cubit.quantityNotToZero();
                             }
                             cubit.lessQuantity();
-
                           },
                           icon: const Icon(Icons.remove),
                         ),

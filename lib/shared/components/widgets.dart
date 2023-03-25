@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import './constant.dart';
 import '../style/color.dart';
 
-// default from in app
+// default from In app
 Widget defaultFormField({
   required TextEditingController? controller,
   required String? labelText,
