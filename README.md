@@ -1,7 +1,7 @@
 # coffee_machine_flutter
 
-### this Is an app Inspired by an old app I make It In a million arable coder. and I make It again because back to those memories.
-### and from some mother say to me why convert this app from java to flutter
+### this  an app Is Inspired by an old app I make It In a million arable coder.
+### and from some mother say to me why convert this app from java to flutter and make It again because back to those memories.
 ### NOTE:
 ### I change something In logic and and other features before covert to flutter
 ### this app will upgrade In the future adding some features.
