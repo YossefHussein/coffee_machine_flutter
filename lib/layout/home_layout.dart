@@ -13,13 +13,13 @@ class HomeLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => AppCubit(),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: lightTheme,
-        home: BlocConsumer<AppCubit, AppState>(
-          listener: (context, state) {},
-          builder: (context, state) {
-            return Scaffold(
+      child: BlocConsumer<AppCubit, AppState>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme: lightTheme,
+            home: Scaffold(
               appBar: AppBar(
                 actions: [
                   Icon(
@@ -30,9 +30,9 @@ class HomeLayout extends StatelessWidget {
                 title: const Text('Coffee Machine ☕'),
               ),
               body: MainModule(),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }
