@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
 
-Color pColor = Colors.brown.shade800;
-Color sColor = Colors.brown.shade600;
-Color scaffoldBackgroundColor = Colors.white;
-Color pDarkTextColor = Colors.white;
-Color? plightTextColor = Colors.brown[800];
+/**
+ * in future I adding dark theme
+ * but now I use just light
+**/
+
+// light theme
+Color pLightColor = Colors.brown.shade600;
+Color sLightColor = Colors.brown.shade500;
+Color pLightTextColor = Colors.brown.shade700;
+Color pLightScaffoldBackgroundColor = Colors.white;
+Color pLightButtonForegroundColor = Colors.brown.shade500;
+Color pLightButtonBorderColor = Colors.brown;
+
+// those general color and It use for light theme
+Color pIconColor = Colors.white;
+Color pAppBarTextColor = Colors.white;
+Color pColorToast = Colors.white;

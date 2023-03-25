@@ -1,50 +1,36 @@
-import 'package:coffee_machine_flutter/bloc/cubit.dart';
 import 'package:coffee_machine_flutter/shared/style/color.dart';
+import 'package:coffee_machine_flutter/shared/style/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
-
-import '../bloc/states.dart';
-import '../modules/main_module/main_module.dart';
+import '../modules/main_module.dart';
+import '../shared/cubit/app_cubit.dart';
+import '../shared/cubit/states.dart';
 
 class HomeLayout extends StatelessWidget {
   const HomeLayout({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        textTheme: GoogleFonts.pangolinTextTheme().apply(
-          bodyColor: plightTextColor,
-          displayColor: plightTextColor,
-        ),
-        buttonTheme: ButtonThemeData(
-          buttonColor: pColor, // Background color (orange in my case).
-          textTheme: ButtonTextTheme.primary,
-          colorScheme: Theme.of(context).colorScheme.copyWith(
-                secondary: sColor,
-              ),
-        ),
-        
-        scaffoldBackgroundColor: Colors.white,
-      ),
-      // dark theme
-      darkTheme: ThemeData(
-          textTheme: GoogleFonts.pangolinTextTheme().apply(
-            bodyColor: pDarkTextColor,
-            displayColor: pDarkTextColor,
-          ),
-          buttonTheme: ButtonThemeData(
-            buttonColor: pColor,
-          ),
-          primaryColor: pColor,
-          scaffoldBackgroundColor: sColor),
-      home: BlocProvider(
-        create: (context) => AppCubit(),
-        child: BlocConsumer<AppCubit, AppState>(
+    return BlocProvider(
+      create: (context) => AppCubit(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: lightTheme,
+        home: BlocConsumer<AppCubit, AppState>(
           listener: (context, state) {},
           builder: (context, state) {
-            return MainModule();
+            return Scaffold(
+              appBar: AppBar(
+                actions: [
+                  Icon(
+                    Icons.coffee_maker,
+                    color: pIconColor,
+                  ),
+                ],
+                title: const Text('Coffee Machine ☕'),
+              ),
+              body: MainModule(),
+            );
           },
         ),
       ),
