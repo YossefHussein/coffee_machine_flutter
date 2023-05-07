@@ -76,21 +76,27 @@ class AppCubit extends Cubit<AppState> {
       price = 0;
       quantity = 0;
     }
-    Fluttertoast.showToast(
-      msg: 'We will send message to your email'
-          '\n ${emailController.text.isEmpty ? 'email must be empty' : emailController.text}'
-          '\n quantity: $quantity'
-          '\n price: ${price * quantity}'
-          '\n addition: \n'
-          ' ${isWithChocolateChecked == true && quantity >= 1 ? 'you order  with chocolate' : 'you order  without chocolate'} '
-          '\n ${isWithCreamChecked == true && quantity >= 1 ? 'you order with  cream' : 'you order  without cream'} '
-          '\n thank you ',
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.BOTTOM,
-      timeInSecForIosWeb: 5,
-      backgroundColor: pLightColor,
-      textColor: pColorToast,
-      fontSize: 18.0,
+    Future.delayed(
+      Duration(milliseconds: 1000),
+      () {
+        Fluttertoast.showToast(
+          msg: 'We will send message to your email'
+              '\n ${emailController.text.isEmpty ? 'email must be empty' : emailController.text}'
+              '\n quantity: $quantity'
+              '\n price: ${price * quantity}'
+              '\n addition: \n'
+              ' ${isWithChocolateChecked == true && quantity >= 1 ? 'you order  with chocolate' : 'you order  without chocolate'} '
+              '\n ${isWithCreamChecked == true && quantity >= 1 ? 'you order with  cream' : 'you order  without cream'} '
+              '\n thank you ',
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 5,
+          backgroundColor: pLightColor,
+          textColor: pColorToast,
+          fontSize: 18.0,
+        );
+      },
     );
+    return;
   }
 }

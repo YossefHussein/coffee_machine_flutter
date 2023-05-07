@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 /// light theme
 ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
-  useMaterial3: true,
   textTheme: GoogleFonts.openSansTextTheme().apply(
     bodyColor: pLightTextColor,
     displayColor: pLightTextColor,
@@ -18,14 +17,17 @@ ThemeData lightTheme = ThemeData(
     ),
   ),
   iconTheme: IconThemeData(
-    color: pIconColor,
+    color: sIconColor,
+  ),
+  checkboxTheme: CheckboxThemeData(
+    fillColor: MaterialStateProperty.all(pLightColor),
   ),
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
       foregroundColor: pLightButtonForegroundColor,
-      side: const BorderSide(
-        color: Colors.brown
-      )
+      side: BorderSide(
+        color: sIconColor,
+      ),
     ),
   ),
   scaffoldBackgroundColor: pLightScaffoldBackgroundColor,
