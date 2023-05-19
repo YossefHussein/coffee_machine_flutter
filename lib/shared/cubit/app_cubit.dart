@@ -69,23 +69,16 @@ class AppCubit extends Cubit<AppState> {
 
   // showToast it function for send for user message
   void showToast() {
-    // this like 'quantityNotToZero' but this for adding some logic
-    if (quantity == 0 || emailController.text.isEmpty) {
-      isWithChocolateChecked = false;
-      isWithChocolateChecked = false;
-      price = 0;
-      quantity = 0;
-    }
     Future.delayed(
-      Duration(milliseconds: 1000),
+      const Duration(milliseconds: 1000),
       () {
         Fluttertoast.showToast(
           msg: 'We will send message to your email'
-              '\n ${emailController.text.isEmpty ? 'email must be empty' : emailController.text}'
+              '\n ${emailController.text.isEmpty ? 'email must be empty, we need email' : emailController.text}'
               '\n quantity: $quantity'
-              '\n price: ${price * quantity}'
+              '\n price: ${(price * quantity)}'
               '\n addition: \n'
-              ' ${isWithChocolateChecked == true && quantity >= 1 ? 'you order  with chocolate' : 'you order  without chocolate'} '
+              '${isWithChocolateChecked == true && quantity >= 1 ? 'you order  with chocolate' : 'you order  without chocolate'} '
               '\n ${isWithCreamChecked == true && quantity >= 1 ? 'you order with  cream' : 'you order  without cream'} '
               '\n thank you ',
           toastLength: Toast.LENGTH_SHORT,

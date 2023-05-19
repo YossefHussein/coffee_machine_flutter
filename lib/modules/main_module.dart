@@ -6,7 +6,6 @@ import '../../shared/cubit/app_cubit.dart';
 import '../shared/components/constant.dart';
 import '../shared/components/widgets.dart';
 import '../shared/cubit/states.dart';
-import '../shared/style/color.dart';
 
 class MainModule extends StatelessWidget {
   const MainModule({Key? key}) : super(key: key);
