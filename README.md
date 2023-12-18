@@ -8,7 +8,6 @@
 <br>
 
 ## My accounts:
-
 <br>
 [My Linkedin Account](https://www.linkedin.com/in/youssef-hussein-aa3b38277/)
 <br>
