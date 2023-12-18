@@ -5,7 +5,6 @@
 ### NOTE:
 ### I changed something In logic and other features before covert to flutter
 ### This app will upgrade In the future adding some features.
-<br>
 
 # My accounts:
 <br>
